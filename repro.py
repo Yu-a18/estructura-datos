@@ -74,13 +74,36 @@ class linked_list:
         current = self.head
         encontrado = False
         while current is not None:
-            if search in current.data[0] or search in current.data[1]:
+            if search in current.data[0].lower() or search in current.data[1].lower():
                 print("Cancion enconcontrada")
                 current.show()
                 encontrado = True
             current = current.next
         if not encontrado:
             print("No se encontro la cancion")
+        
+
+
+    def delete(self, delete):
+        current = self.head
+        previous = None
+        encontrado = False
+        while current is not None:
+            if delete in current.data[0] or delete in current.data[1]:
+                print("Cancion enconcontrada")
+                current.show()
+                encontrado = True
+                if previous is None:
+                    self.head = current.next
+                else:
+                    previous.next = current.next
+                self.size -= 1
+                print("Cancion eliminada")
+            break
+        if not encontrado:
+            print("No se encontro la cancion")
+       
+
 
 
 
@@ -91,7 +114,8 @@ while True:
     print("1. insetar cancion ")
     print("2. buscar cancion")
     print("3. mostrar canciones")
-    print("4. salir")
+    print("4. Eliminar cancion")
+    print("5. salir")
 
 
     opcion = input("Elija una opcion: ")
@@ -100,20 +124,24 @@ while True:
     if opcion == "1":
         titulo = input("Inserte el Titulo: ")
         artista = input("Inserte el artista: ")
-        año = input("Insertte el año de la cancion: ")
+        año = input("Inserte el año de la cancion: ")
         genero = input("Insertar el genero de la cancion: ")
 
         new_list.insert_last([titulo, artista, año, genero])
 
     elif opcion == "2":
         buscar_texto = input("Ingrese titulo o artistas a buscar: ")
-        new_list.search(buscar_texto)
+        new_list.search(buscar_texto.lower())
 
     elif opcion == "3":
         print("\n")
         new_list.show_list()
-    
+
     elif opcion == "4":
+        eliminar_texto = input("Ingrese titulo o artista a eliminar:")
+        new_list.delete(eliminar_texto)
+    
+    elif opcion == "5":
         print("Saliendo del programa")
         break
 
