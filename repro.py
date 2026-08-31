@@ -89,7 +89,7 @@ class linked_list:
         previous = None
         encontrado = False
         while current is not None:
-            if delete in current.data[0] or delete in current.data[1]:
+            if delete in current.data[0].lower() or delete in current.data[1].lower():
                 print("Cancion enconcontrada")
                 current.show()
                 encontrado = True
@@ -139,7 +139,7 @@ while True:
 
     elif opcion == "4":
         eliminar_texto = input("Ingrese titulo o artista a eliminar:")
-        new_list.delete(eliminar_texto)
+        new_list.delete(eliminar_texto.lower())
     
     elif opcion == "5":
         print("Saliendo del programa")
