@@ -101,7 +101,7 @@ class linked_list:
                 print("Cancion eliminada")
             break
         if not encontrado:
-            print("No se encontro la cancion")
+            print("No se encontro la cancion para eliminar")
        
 
 
